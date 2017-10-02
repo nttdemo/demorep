@@ -1,3 +1,7 @@
 *.log
 /bin
 /obj
+/TestConsole/TestConsole/obj/Debug
+/TestConsole/TestConsole/bin/Debug
+/TestConsole/UnitTestConsole/bin/Debug
+/TestConsole/UnitTestConsole/obj/Debug
