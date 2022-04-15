@@ -18,10 +18,10 @@ jobs:
       with:
         msbuild-architecture: x64
     - name: Restore dependencies
-      run: nuget restore /TestConsole/TestConsole.sln
+      run: nuget restore TestConsole.sln
       
     - name: Build
-      run: msbuild /TestConsole/TestConsole.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+      run: msbuild TestConsole.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
