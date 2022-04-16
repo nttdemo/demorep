@@ -23,8 +23,6 @@ jobs:
     - name: Build
       run: msbuild ./TestConsole/TestConsole.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
   
-   
-
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.2
       with:
