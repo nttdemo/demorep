@@ -23,26 +23,11 @@ jobs:
     - name: Build
       run: msbuild ./TestConsole/TestConsole.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
   
-    -name: .Net Unit Test   
-      run:
-      using: "composite"
-      steps:
-        -
-             run: |
-              $files = @()
-              Get-ChildItem -Path ${{ github.workspace }}  -Recurse -Filter "*.Tests.dll" | Where-Object {$_.Directory.FullName.Contains("\bin\Release")} | ForEach-Object {$files+=$_.Directory.FullName+"\"+$_.Name}          
-              Write-Host $files  
-
-              if ($files -eq "")
-              {
-              echo "No unit tests have been detected."
-              } else {
-              & vstest.console.exe $files /EnableCodeCoverage  /ResultsDirectory:${{ github.workspace }}\TestResults
-              }
+   
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.2
       with:
         name: published_app
-        path: bin\Release\Publish
+        path: bin\Release\
         if-no-files-found: error
